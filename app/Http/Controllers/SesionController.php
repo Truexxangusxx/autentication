@@ -39,14 +39,27 @@ class SesionController extends Controller
         $email=$request->email;
         $password=$request->password;
         $name=$request->name;
+        $msg="";
+        $error=false;
         
+        $valido=User::where('email',[$email])->get();
+
+        if ($valido == null){
             $user = User::create([
                 'name' => $name,
                 'email' => $email,
                 'password' => bcrypt($password),
             ]);
-            Session::put('usuario', $user); 
-            return $user;
+            $msg="Usuario registrado correctamente";
+        }
+        else{
+            $user=$valido;
+            $msg="El correo ya ha sido registrado";
+            $error=true;
+        }
+
+            
+        return ["user"=>$user, "msg"=>$msg, "error"=>$error];
         
     }
     
