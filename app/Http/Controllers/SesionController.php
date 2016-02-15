@@ -42,9 +42,9 @@ class SesionController extends Controller
         $msg="";
         $error=false;
         
-        $valido=User::where('email',[$email])->get();
+        $valido=User::where('email',[$email])->count();
 
-        if ($valido == null){
+        if ($valido == 0){
             $user = User::create([
                 'name' => $name,
                 'email' => $email,
