@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'cmedina@electrodata.com.pe', 'name' => 'Carlos medina'],
+    'from' => ['address' => 'emeeting@electrodata.com.pe', 'name' => 'emeeting'],
 
     /*
     |--------------------------------------------------------------------------
