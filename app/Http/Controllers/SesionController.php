@@ -88,7 +88,7 @@ class SesionController extends Controller
             
             $email = explode(";", trim($email));
             Mail::send('mails.test', $data, function ($message) use ($name,$email,$name) {
-                $message->to($email)->subject('Initacion a la reunion de '.$name);
+                $message->to($email)->subject('Invitacion a la reunion de '.$name);
             });
             
             return "Se envio por correo el enlace";
