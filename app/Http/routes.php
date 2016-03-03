@@ -25,6 +25,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('registrar', 'SesionController@registrar');
     Route::get('enviar_email', 'SesionController@enviar_email');
     Route::get('cambiar', 'SesionController@cambiar');
+    Route::get('historico', 'SesionController@historico');
         
 });
 

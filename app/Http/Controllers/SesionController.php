@@ -9,6 +9,7 @@ use Auth;
 use Session;
 use App\User;
 use Illuminate\Support\Facades\Mail;
+use App\historico;
 
 class SesionController extends Controller
 {
@@ -129,7 +130,35 @@ class SesionController extends Controller
         return ["user"=>$user, "msg"=>$msg, "error"=>$error];
     }
     
-    
+    public function historico(Request $request)
+    {
+        header("Access-Control-Allow-Origin: *");
+        header("Allow: GET, POST, OPTIONS");
+        
+        $error = false;
+        $msg="";
+        $historico=null;
+        
+        try{
+            $pagina=$request->pagina;
+            $accion=$request->accion;
+            $usuario=$request->usuario;
+            
+            $historico = historico::create([
+                'pagina' => $pagina,
+                'accion' => $accion,
+                'usuario' => $usuario,
+            ]);
+   
+        }
+        
+        catch(\Exception $e){
+            $error=true;
+            $msg=$e->getMessage();
+        }
+        
+        return ["historico"=>$historico, "msg"=>$msg, "error"=>$error];
+    }    
     
     
     
